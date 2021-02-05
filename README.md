@@ -25,4 +25,4 @@ https://www.japantimes.co.jp/,None
 
 BBC - Homepage
 
-<img src="images/www.bbc.com.png" style="margin-bottom:20px">
+<img src="images/bbc.png" style="margin-bottom:20px">
