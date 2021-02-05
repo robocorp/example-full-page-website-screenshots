@@ -1,0 +1,8 @@
+url,accept_cookies_selector
+https://www.bbc.com/,css=#bbccookies-continue-button
+https://www.nytimes.com/,xpath=//button[@data-testid="expanded-dock-btn-selector"]
+https://www.repubblica.it/,css=.iubenda-cs-accept-btn
+https://elpais.com/,css=#didomi-notice-agree-button
+https://timesofindia.indiatimes.com/,css=#consent-continue-button
+https://www.themoscowtimes.com/,None
+https://www.japantimes.co.jp/,None
