@@ -5,3 +5,24 @@
 - Uses the [Playwright](https://playwright.dev/)-based [Robot Framework Browser](https://robotframework-browser.org/) library to take full page screenshots of the websites.
 
 > Read [Using the Robot Framework Browser library](https://robocorp.com/docs/development-guide/browser/playwright) article for more information.
+
+## Example csv file
+
+`websites.csv`:
+
+```
+url,accept_cookies_selector
+https://www.bbc.com/,css=#bbccookies-continue-button
+https://www.nytimes.com/,xpath=//button[@data-testid="expanded-dock-btn-selector"]
+https://www.repubblica.it/,css=.iubenda-cs-accept-btn
+https://elpais.com/,css=#didomi-notice-agree-button
+https://timesofindia.indiatimes.com/,css=#consent-continue-button
+https://www.themoscowtimes.com/,None
+https://www.japantimes.co.jp/,None
+```
+
+## Example screenshot
+
+BBC - Homepage
+
+<img src="images/www.bbc.com.png" style="margin-bottom:20px">
