@@ -12,8 +12,16 @@ Take full page screenshot
     [Arguments]    ${url}    ${accept_cookies_selector}
     New Page    ${url}
     Click    ${accept_cookies_selector}
+    Scroll the page and wait until network is idle
     ${domain}=    Evaluate    urllib.parse.urlparse('${url}').netloc
     Take Screenshot    ${CURDIR}${/}output${/}${domain}    fullPage=True
+
+*** Keywords ***
+Scroll the page and wait until network is idle
+    FOR    ${i}    IN RANGE    10
+        Scroll By    vertical=100%
+    END
+    Run Keyword And Ignore Error    Wait Until Network Is Idle
 
 *** Tasks ***
 Take full page screenshots of given websites
