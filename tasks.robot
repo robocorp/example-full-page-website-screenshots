@@ -11,7 +11,7 @@ ${WEBSITES_CSV}=    websites.csv
 Take full page screenshot
     [Arguments]    ${url}    ${accept_cookies_selector}
     New Page    ${url}
-    Click    ${accept_cookies_selector}
+    Run Keyword And Ignore Error    Click    ${accept_cookies_selector}
     Scroll the page and wait until network is idle
     ${domain}=    Evaluate    urllib.parse.urlparse('${url}').netloc
     Take Screenshot    ${CURDIR}${/}output${/}${domain}    fullPage=True
