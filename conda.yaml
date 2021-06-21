@@ -5,7 +5,7 @@ dependencies:
   - pip=20.1
   - nodejs=14.15.4
   - pip:
-      - robotframework-browser==5.1.0
+      - robotframework-browser==5.1.1
       - rpaframework==10.3.0
 
 rccPostInstall:
