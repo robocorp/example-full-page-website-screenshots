@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation     Takes full page screenshots of given websites.
-Library           Browser
+Library           RPA.Browser.Playwright
 Library           RPA.Tables
 Task Setup        Register Keyword To Run On Failure    ${NONE}
 
