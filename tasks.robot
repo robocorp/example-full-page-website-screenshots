@@ -9,12 +9,20 @@ ${WEBSITES_CSV}=    websites.csv
 
 *** Keywords ***
 Take full page screenshot
-    [Arguments]    ${url}    ${accept_cookies_selector}
+    [Arguments]    ${url}    ${accept_cookies_selector}    ${data_consent_selector}
     New Page    ${url}
-    Run Keyword And Ignore Error    Click    ${accept_cookies_selector}
+    Accept cookies and consents
+    ...    ${accept_cookies_selector}
+    ...    ${data_consent_selector}
     Scroll the page and wait until network is idle
     ${domain}=    Evaluate    urllib.parse.urlparse('${url}').netloc
     Take Screenshot    ${CURDIR}${/}output${/}${domain}    fullPage=True
+
+*** Keywords ***
+Accept cookies and consents
+    [Arguments]    ${accept_cookies_selector}    ${data_consent_selector}
+    Run Keyword And Ignore Error    Click    ${accept_cookies_selector}
+    Run Keyword And Ignore Error    Click    ${data_consent_selector}
 
 *** Keywords ***
 Scroll the page and wait until network is idle
@@ -31,4 +39,5 @@ Take full page screenshots of given websites
         ...    Take full page screenshot
         ...    ${website}[url]
         ...    ${website}[accept_cookies_selector]
+        ...    ${website}[data_consent_selector]
     END
