@@ -1,8 +1,8 @@
-url,accept_cookies_selector
-https://www.bbc.com/,css=#bbccookies-continue-button
-https://www.nytimes.com/,xpath=//button[@data-testid="expanded-dock-btn-selector"]
-https://www.repubblica.it/,css=.iubenda-cs-accept-btn
-https://elpais.com/,css=#didomi-notice-agree-button
-https://timesofindia.indiatimes.com/,css=#consent-continue-button
-https://www.themoscowtimes.com/,None
-https://www.japantimes.co.jp/,None
+url,accept_cookies_selector,data_consent_selector
+https://www.bbc.com/,css=#bbccookies-continue-button,css=button.fc-cta-consent
+https://www.nytimes.com/,xpath=//button[@data-testid="expanded-dock-btn-selector"],None
+https://www.repubblica.it/,css=.iubenda-cs-accept-btn,None
+https://elpais.com/,css=#didomi-notice-agree-button,None
+https://timesofindia.indiatimes.com/,css=#consent-continue-button,None
+https://www.themoscowtimes.com/,None,None
+https://www.japantimes.co.jp/,None,None
