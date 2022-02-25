@@ -16,7 +16,7 @@ Take full page screenshot
     ...    ${data_consent_selector}
     Scroll the page and wait until network is idle
     ${domain}=    Evaluate    urllib.parse.urlparse('${url}').netloc
-    Take Screenshot    ${CURDIR}${/}output${/}${domain}    fullPage=True
+    Take Screenshot    ${OUTPUT_DIR}${/}${domain}    fullPage=True
 
 *** Keywords ***
 Accept cookies and consents
