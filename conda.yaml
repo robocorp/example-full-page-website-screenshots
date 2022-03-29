@@ -3,10 +3,10 @@ channels:
 dependencies:
   - python=3.7.5
   - pip=20.1
-  - nodejs=16.13.2
+  - nodejs=16.14.2
   - pip:
       - robotframework-browser==12.2.0
-      - rpaframework==12.9.0
+      - rpaframework==13.0.0
 
 rccPostInstall:
   - rfbrowser init
