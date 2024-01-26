@@ -1,8 +1,4 @@
 url,accept_cookies_selector,data_consent_selector
-https://www.bbc.com/,css=#bbccookies-continue-button,css=button.fc-cta-consent
-https://www.nytimes.com/,xpath=//button[@data-testid="expanded-dock-btn-selector"],None
-https://www.repubblica.it/,css=.iubenda-cs-accept-btn,None
-https://elpais.com/,css=#didomi-notice-agree-button,None
-https://timesofindia.indiatimes.com/,css=#consent-continue-button,None
-https://www.themoscowtimes.com/,None,None
-https://www.japantimes.co.jp/,None,None
+https://www.nytimes.com/,"xpath=//div[contains(@class, 'fides-banner-button-group')]//button[text()='Accept all']",
+https://www.themoscowtimes.com/,,"frame:css=.sp_choice_type_11"
+https://www.japantimes.co.jp/,,"css=.fc-cta-consent > .fc-button-label"
