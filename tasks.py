@@ -1,14 +1,23 @@
 import csv
+import os
 import time
+from pathlib import Path
 from urllib.parse import urlparse
+
+from robocorp import browser, log
 from robocorp.tasks import task
-from robocorp import browser
+
+OUTPUT_DIR = Path(os.environ.get("ROBOT_ARTIFACTS", "output"))
+DEVDATA = Path("devdata")
+
+ACCEPT_COOKIES_SELECTOR = "accept_cookies_selector"
+DATA_CONSENT_SELECTOR = "data_consent_selector"
 
 
 @task
 def take_website_screenshots():
     """Take screenshots of all websites found in websites.csv file."""
-    with open("websites.csv", mode="r") as csv_file:
+    with open(str(DEVDATA / "websites.csv"), mode="r") as csv_file:
         csv_reader = csv.DictReader(csv_file)
         websites = list(csv_reader)
 
@@ -21,32 +30,22 @@ def take_website_screenshots():
         # some websites have animations on cookies and consents so wait for that to disappear
         time.sleep(1)
 
-        domain = get_domain_name(website["url"])
-        page.screenshot(path=f"output/{domain}.png", full_page=True)
-
-
-def get_domain_name(url) -> str:
-    parsed_url = urlparse(url)
-    domain_parts = parsed_url.netloc.split(".")
-
-    # Check if the domain has subdomains and extract the second-to-last part
-    if len(domain_parts) >= 2:
-        return domain_parts[-2]
-
-    return domain_parts[0]
+        domain = urlparse(website["url"]).netloc
+        page.screenshot(path=str(OUTPUT_DIR / f"{domain}.png"), full_page=True)
 
 
 def accept_cookies_and_consents(website):
     page = browser.page()
 
-    if website["accept_cookies_selector"]:
+    cookie_selector = website.get(ACCEPT_COOKIES_SELECTOR)
+    if cookie_selector:
         try:
-            page.locator(website["accept_cookies_selector"]).click()
-        except Exception:
-            pass
+            page.locator(cookie_selector).click()
+        except Exception as exc:
+            log.warn(f"An error occurred during the cookies accept: {exc}")
 
-    data_consent_selector = website["data_consent_selector"]
-    if website["data_consent_selector"]:
+    data_consent_selector = website.get(DATA_CONSENT_SELECTOR)
+    if data_consent_selector:
         try:
             if "frame" in data_consent_selector:
                 locator = page.frames[len(page.frames) - 1].locator(
@@ -56,5 +55,5 @@ def accept_cookies_and_consents(website):
                 locator = page.locator(data_consent_selector)
 
             locator.click()
-        except Exception:
-            pass
+        except Exception as exc:
+            log.warn(f"An error occurred during the data consent: {exc}")

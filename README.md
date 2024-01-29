@@ -2,7 +2,7 @@
 
 [![YouTube video](https://img.youtube.com/vi/aQkXTHP3Xxw/0.jpg)](http://www.youtube.com/watch?v=aQkXTHP3Xxw)
 
-- Reads the website data (URL, accept cookies and consent selectors) from a `.csv` using the python csv built in library.
+- Reads the website data (URL, accept cookies and consent selectors) from a `.csv` file using the Python's `csv` built-in library. library.
 
 - Uses the [Playwright](https://playwright.dev/)-based [Python Framework Browser](https://robocorp.com/docs/python/robocorp/robocorp-browser) library to take full page screenshots of the websites.
 
