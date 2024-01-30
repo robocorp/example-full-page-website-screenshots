@@ -1,0 +1,4 @@
+url,accept_cookies_selector,data_consent_selector
+https://www.nytimes.com/,"xpath=//div[contains(@class, 'fides-banner-button-group')]//button[text()='Accept all']",
+https://www.themoscowtimes.com/,,"frame:css=.sp_choice_type_11"
+https://www.japantimes.co.jp/,,"css=.fc-cta-consent > .fc-button-label"

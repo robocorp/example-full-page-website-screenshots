@@ -2,11 +2,9 @@
 
 [![YouTube video](https://img.youtube.com/vi/aQkXTHP3Xxw/0.jpg)](http://www.youtube.com/watch?v=aQkXTHP3Xxw)
 
-- Reads the website data (URL, accept cookies selector) from a `.csv` file using the [`RPA.Tables`](https://robocorp.com/docs/libraries/rpa-framework/rpa-tables) library.
+- Reads the website data (URL, accept cookies and consent selectors) from a `.csv` file using the Python's `csv` built-in library. library.
 
-- Uses the [Playwright](https://playwright.dev/)-based [Robot Framework Browser](https://robotframework-browser.org/) library to take full page screenshots of the websites.
-
-> Read [Using the Robot Framework Browser library](https://robocorp.com/docs/development-guide/browser/playwright) article for more information.
+- Uses the [Playwright](https://playwright.dev/)-based [Python Framework Browser](https://robocorp.com/docs/python/robocorp/robocorp-browser) library to take full page screenshots of the websites.
 
 ## Example csv file
 
@@ -14,13 +12,9 @@
 
 ```
 url,accept_cookies_selector,data_consent_selector
-https://www.bbc.com/,css=#bbccookies-continue-button,css=button.fc-cta-consent
-https://www.nytimes.com/,xpath=//button[@data-testid="expanded-dock-btn-selector"],None
-https://www.repubblica.it/,css=.iubenda-cs-accept-btn,None
-https://elpais.com/,css=#didomi-notice-agree-button,None
-https://timesofindia.indiatimes.com/,css=#consent-continue-button,None
-https://www.themoscowtimes.com/,None,None
-https://www.japantimes.co.jp/,None,None
+https://www.nytimes.com/,"xpath=//div[contains(@class, 'fides-banner-button-group')]//button[text()='Accept all']",
+https://www.themoscowtimes.com/,,"frame:css=.sp_choice_type_11"
+https://www.japantimes.co.jp/,,"css=.fc-cta-consent > .fc-button-label"
 ```
 
 ## Example screenshot
