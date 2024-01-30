@@ -17,7 +17,7 @@ DATA_CONSENT_SELECTOR = "data_consent_selector"
 @task
 def take_website_screenshots():
     """Take screenshots of all websites found in websites.csv file."""
-    with open(str(DEVDATA / "websites.csv"), mode="r") as csv_file:
+    with open(str(DEVDATA / "websites.csv")) as csv_file:
         csv_reader = csv.DictReader(csv_file)
         websites = list(csv_reader)
 
@@ -27,14 +27,22 @@ def take_website_screenshots():
 
         accept_cookies_and_consents(website)
 
-        # some websites have animations on cookies and consents so wait for that to disappear
+        # Some websites have animations on cookies and consents so wait for that to
+        #  disappear.
         time.sleep(1)
 
-        domain = urlparse(website["url"]).netloc
+        domain = urlparse(website["url"]).netloc.replace(".", "_")
         page.screenshot(path=str(OUTPUT_DIR / f"{domain}.png"), full_page=True)
 
 
-def accept_cookies_and_consents(website):
+def accept_cookies_and_consents(website: dict):
+    """
+    Accept cookies and data consents on every page before taking a screenshot.
+
+    Args:
+        website (dict): A dictionary with website related info, including the locators
+            to find the consent elements with.
+    """
     page = browser.page()
 
     cookie_selector = website.get(ACCEPT_COOKIES_SELECTOR)

@@ -1,5 +1,5 @@
 tasks:
-  Run task:
+  Take website screenshots:
     shell: python -m robocorp.tasks run
 
 condaConfigFile: conda.yaml
